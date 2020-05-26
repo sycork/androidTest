@@ -1,0 +1,138 @@
+package com.sycork.android;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * DialogFragment process flow
+ * 
+ * =======Result=========
+ * E/Check: onAttach: 1
+ * E/Check: onCreate: 2
+ * E/Check: onCreateDialog: 3
+ * E/Check: onCreateView: 4
+ * E/Check: onActivityCreated: 5
+ * E/Check: onStart: 6
+ * E/Check: onResume: 7
+ * E/Check: onPause: 8
+ * E/Check: onStop: 9
+ * E/Check: onDestroyView: 10
+ * E/Check: onDestroy: 11
+ * E/Check: onDetach: 12
+ * /
+
+public class HLDialogNew extends DialogFragment {
+
+    private int count;
+
+    public HLDialogNew() {
+        super();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        //1
+        Log.e("Check", "onAttach: " + ++count);
+    }
+    
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //2
+        Log.e("Check", "onCreate: " + ++count);
+    }
+    
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //3
+        Log.e("Check", "onCreateDialog: " + ++count );
+        return super.onCreateDialog(savedInstanceState);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //4
+        Log.e("Check", "onCreateView: " + ++count );
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+    
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //5
+        Log.e("Check", "onActivityCreated: " + ++count );
+    }
+    
+    @Override
+    public void onStart() {
+        super.onStart();
+        //6
+        Log.e("Check", "onStart: " + ++count );
+    }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+        //7
+        Log.e("Check", "onResume: " + ++count );
+    }
+    
+    /**
+    /* User can check the screen
+     */
+     
+    @Override
+    public void onPause() {
+        super.onPause();
+        //8
+        Log.e("Check", "onPause: " + ++count );
+    }
+    
+    @Override
+    public void onStop() {
+        super.onStop();
+        //9
+        Log.e("Check", "onStop: " + ++count );
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        //10
+        Log.e("Check", "onDestroyView: " + ++count );
+    }
+    
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //11
+        Log.e("Check", "onDestroy: " + ++count );
+    }
+    
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        //12
+        Log.e("Check", "onDetach: " + ++count);
+    }
+    
+    public static HLDialogNew newInstance(FragmentManager fragmentManager){
+        HLDialogNew hlDialogNew = new HLDialogNew();
+        return hlDialogNew;
+    }
+}
